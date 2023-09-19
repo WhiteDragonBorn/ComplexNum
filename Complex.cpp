@@ -24,9 +24,27 @@ Complex_numbers::Complex::~Complex() {
   _imag = nullptr;
 }
 
+// with default precision = 6
 std::string Complex_numbers::Complex::to_string() const {
   std::string strToReturn =
       "( " + std::to_string(*(_real)) + " , " + std::to_string(*(_imag)) + " )";
+  return strToReturn;
+}
+
+std::string Complex_numbers::Complex::to_string(const int& precision) const {
+  std::ostringstream out, out_2;
+
+  out.precision(precision);
+  out_2.precision(precision);
+
+  out << std::fixed << *(_real);
+  std::string temp_1 = std::move(out).str();
+
+  out_2 << std::fixed << *(_imag);
+  std::string temp_2 = std::move(out_2).str();
+
+  std::string strToReturn = "( " + temp_1 + " , " + temp_2 + " )";
+
   return strToReturn;
 }
 

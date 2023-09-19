@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
 
 typedef double* dbp;
@@ -14,10 +15,10 @@ class Complex {
   Complex();
   Complex(const double&, const double&);
   Complex(const Complex&);
-
   ~Complex();
 
   std::string to_string() const;
+  std::string to_string(const int& precision) const;
   Complex conjugate() const;
 
   Complex& operator=(const Complex&);
