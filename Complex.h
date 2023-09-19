@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 typedef double* dbp;
@@ -11,13 +12,22 @@ class Complex {
 
  public:
   Complex();
+  Complex(const double&, const double&);
+  Complex(const Complex&);
+
   ~Complex();
 
-  std::string to_string();
+  std::string to_string() const;
+  Complex conjugate() const;
 
-  Complex operator+(const Complex&);
-  Complex operator-(const Complex&);
-  Complex operator*(const Complex&);
-  Complex operator/(const Complex&);
+  Complex& operator=(const Complex&);
+  Complex operator+(const Complex&) const;
+  Complex operator-(const Complex&) const;
+  Complex operator*(const Complex&) const;
+  Complex operator/(const Complex&) const;
+  bool operator==(const Complex& other) const;
+
+  friend std::ostream& operator<<(std::ostream&, const Complex&);
+  friend std::istream& operator>>(std::istream&, const Complex&);
 };
 }  // namespace Complex_numbers
